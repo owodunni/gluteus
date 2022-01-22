@@ -10,7 +10,8 @@ metadata:
   name: geth
   namespace: crypto
 spec:
-  type: NodePort
+  type: LoadBalancer
+  loadBalancerIP: "${METALLB_GETH_ADDR}"
   ports:
     - name: "discovery-tcp"
       port: 30303
@@ -27,5 +28,3 @@ spec:
       targetPort: 8546
   selector:
     io.kompose.service: geth
-status:
-  loadBalancer: {}
