@@ -1,0 +1,27 @@
+version: "3"
+services:
+  geth:
+    image: ethereum/client-go:v1.10.15
+    volumes:
+      - geth-data:/data
+    ports:
+      - 30303:30303/tcp
+      - 30304:30304/udp
+      - 8545:8545
+    command:
+      - --http
+      - --http.addr=0.0.0.0
+      - --http.vhosts=*
+      - --http.corsdomain=*
+      - --http.api=eth,net,web3,txpool
+      - --allow-insecure-unlock
+      - --metrics
+      - --metrics.expensive
+      - --pprof
+      - --pprof.addr=0.0.0.0
+      - --ws
+      - --ws.addr=0.0.0.0
+      - --datadir=/data
+
+volumes:
+  geth-data:

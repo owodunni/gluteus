@@ -72,6 +72,7 @@ For provisioning the following tools will be used:
 | [pre-commit](https://github.com/pre-commit/pre-commit) | Runs checks pre `git commit`                             |
 | [gitleaks](https://github.com/zricethezav/gitleaks)    | Scan git repos (or files) for secrets                    |
 | [prettier](https://github.com/prettier/prettier)       | Prettier is an opinionated code formatter.               |
+| [kompose](https://github.com/kubernetes/kompose)       | Kompose converts docker-compose to kubernetes.           |
 
 ### :warning:&nbsp; pre-commit
 

@@ -1,0 +1,60 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.24.0 (HEAD)
+  labels:
+    io.kompose.service: geth
+  name: geth
+  namespace: crypto
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: geth
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.24.0 (HEAD)
+      labels:
+        io.kompose.service: geth
+    spec:
+      containers:
+        - args:
+            - --http
+            - --http.addr=0.0.0.0
+            - --http.vhosts=*
+            - --http.corsdomain=*
+            - --http.api=eth,net,web3,txpool
+            - --allow-insecure-unlock
+            - --metrics
+            - --metrics.expensive
+            - --pprof
+            - --pprof.addr=0.0.0.0
+            - --ws
+            - --ws.addr=0.0.0.0
+            - --ws.origins=*
+            - --datadir=/data
+          image: ethereum/client-go:v1.10.15
+          name: geth
+          ports:
+            - containerPort: 30303
+            - containerPort: 30304
+              protocol: UDP
+            - containerPort: 8545
+            - containerPort: 8546
+          resources: {}
+          volumeMounts:
+            - mountPath: /data
+              name: geth-data
+      restartPolicy: Always
+      volumes:
+        - name: geth-data
+          persistentVolumeClaim:
+            claimName: geth-data
+status: {}
