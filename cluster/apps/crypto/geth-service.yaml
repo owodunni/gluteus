@@ -26,5 +26,8 @@ spec:
     - name: "rpc-ws"
       port: 8546
       targetPort: 8546
+    - name: "metrics"
+      port: 6060
+      targetPort: 6060
   selector:
     io.kompose.service: geth

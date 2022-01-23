@@ -48,6 +48,7 @@ spec:
               protocol: UDP
             - containerPort: 8545
             - containerPort: 8546
+            - containerPort: 6060
           resources:
             requests:
               memory: "8Gi"
