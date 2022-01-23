@@ -48,7 +48,13 @@ spec:
               protocol: UDP
             - containerPort: 8545
             - containerPort: 8546
-          resources: {}
+          resources:
+            requests:
+              memory: "8Gi"
+              cpu: "3000m"
+            limits:
+              memory: "16Gi"
+              cpu: "4000m"
           volumeMounts:
             - mountPath: /data
               name: geth-data
