@@ -4,4 +4,3 @@ resources:
   - geth-data-pvc.yaml
   - geth-deployment.yaml
   - geth-service.yaml
-  - namespace.yaml
