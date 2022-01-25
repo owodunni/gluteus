@@ -124,8 +124,6 @@ spec:
         requests:
           cpu: 1000m
           memory: 1000Mi
-      thanosService:
-        enabled: true
       prometheusSpec:
         replicas: 1
         replicaExternalLabelName: "replica"
