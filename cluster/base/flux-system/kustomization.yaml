@@ -6,4 +6,3 @@ resources:
   - gotk-sync.yaml
   - charts
   - flux-notifications.yaml
-  - monitoring
