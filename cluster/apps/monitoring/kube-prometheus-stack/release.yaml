@@ -48,11 +48,13 @@ spec:
           hajimari.io/enable: "true"
           hajimari.io/icon: "web"
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+          cert-manager.io/cluster-issuer: "letsencrypt-production"
         hosts:
           - "grafana.${SECRET_DOMAIN}"
         tls:
           - hosts:
               - "grafana.${SECRET_DOMAIN}"
+            secretName: "grafana-tls"
     prometheus:
       prometheusSpec:
         podMonitorSelector:
