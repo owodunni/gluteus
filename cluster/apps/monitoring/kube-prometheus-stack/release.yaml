@@ -62,3 +62,11 @@ spec:
         podMonitorSelector:
           matchLabels:
             app.kubernetes.io/part-of: flux
+        replicas: 1
+        additionalScrapeConfigs:
+          - job_name: 'geth'
+            honor_timestamps: true
+            metrics_path: /debug/metrics/prometheus
+            static_configs:
+              - targets:
+                  - 192.168.92.221:6060
