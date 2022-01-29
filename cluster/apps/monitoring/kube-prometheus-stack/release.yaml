@@ -21,7 +21,21 @@ spec:
     crds: CreateReplace
   values:
     alertmanager:
-      enabled: false
+      enabled: true
+      ingress:
+        enabled: true
+        pathType: Prefix
+        ingressClassName: "traefik"
+        annotations:
+          hajimari.io/appName: "alert-manager"
+          hajimari.io/enable: "true"
+          hajimari.io/icon: "web"
+          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+        hosts:
+          - "alert-manager.${SECRET_DOMAIN}"
+        tls:
+          - hosts:
+              - "alert-manager.${SECRET_DOMAIN}"
     grafana:
       sidecar:
         dashboards:
