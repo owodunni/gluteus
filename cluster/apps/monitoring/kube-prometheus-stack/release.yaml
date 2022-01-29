@@ -60,6 +60,7 @@ spec:
               - "alert-manager.${SECRET_DOMAIN}"
             secretName: alert-manager-tls
     grafana:
+      adminPassword: "${SECRET_GRAFANA_PASSWORD}"
       sidecar:
         dashboards:
           searchNamespace: ALL
@@ -90,4 +91,4 @@ spec:
             metrics_path: /debug/metrics/prometheus
             static_configs:
               - targets:
-                  - 192.168.92.221:6060
+                  - "${METALLB_GETH_ADDR}:6060"
