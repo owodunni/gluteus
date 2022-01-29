@@ -69,8 +69,10 @@ spec:
           hajimari.io/enable: "true"
           hajimari.io/icon: "web"
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+          cert-manager.io/cluster-issuer: "letsencrypt-production"
         hosts:
           - "prometheus.${SECRET_DOMAIN}"
         tls:
           - hosts:
               - "prometheus.${SECRET_DOMAIN}"
+            secretName: prometheus-tls
