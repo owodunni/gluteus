@@ -54,8 +54,8 @@ main() {
         envsubst < "${PROJECT_DIR}/tmpl/cluster/docker-secrets.sops.yaml" \
             > "${PROJECT_DIR}/cluster/base/docker-secrets.sops.yaml"
 
-        sops --encrypt --in-place "${PROJECT_DIR}/cluster/base/cluster-secrets.sops.yaml"
         sops --encrypt --in-place "${PROJECT_DIR}/cluster/base/docker-secrets.sops.yaml"
+        sops --encrypt --in-place "${PROJECT_DIR}/cluster/base/cluster-secrets.sops.yaml"
         sops --encrypt --in-place "${PROJECT_DIR}/cluster/core/cert-manager/secret.sops.yaml"
         # terraform
         envsubst < "${PROJECT_DIR}/tmpl/terraform/secret.sops.yaml" \
