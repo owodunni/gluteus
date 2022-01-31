@@ -19,8 +19,15 @@ spec:
         app: ullr
     spec:
       containers:
-        - image: owodunni/ullr:0.1.2
-          name: ullr
+        - name: ullr
+          image: owodunni/ullr:0.1.2
+          args:
+            - "./ullr"
+            - track
+            - "Transfer(address,address,uint256)"
+            - erc20
+            - -n
+            - "ws://${METALLB_GETH_ADDR}:8546"
           resources:
             requests:
               memory: "1Gi"
