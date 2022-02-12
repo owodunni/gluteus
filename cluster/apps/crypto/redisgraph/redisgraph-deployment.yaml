@@ -1,0 +1,40 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.24.0 (HEAD)
+  labels:
+    io.kompose.service: redisgraph
+  name: redisgraph
+  namespace: crypto
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: redisgraph
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.24.0 (HEAD)
+      labels:
+        io.kompose.service: redisgraph
+    spec:
+      containers:
+        - name: redisgraph
+          ports:
+            - containerPort: 6379
+          image: redislabs/redisgraph
+          resources:
+            requests:
+              memory: "4Gi"
+              cpu: "500m"
+            limits:
+              memory: "8Gi"
+              cpu: "2000m"
+      restartPolicy: Always
+status: {}
