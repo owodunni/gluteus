@@ -6,4 +6,4 @@ resources:
   - geth-deployment.yaml
   - geth-service.yaml
   - ullr
-  - redisgraph
+  - neo4j
